@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Summit 2026 Swag Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-primary: #7C3AED;
+            --purple-dark: #5B21B6;
+            --purple-light: #A78BFA;
+            --purple-subtle: #EDE9FE;
+            --cream: #FAF9F7;
+            --off-white: #F5F5F3;
+            --warm-gray: #78716C;
+            --dark-gray: #292524;
+            --forest: #1C1917;
+            --white: #FFFFFF;
+            --border: #E7E5E4;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header - Sweetgreen style */
+        .header {
+            padding: 20px 0;
+            background: var(--cream);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-left {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-primary);
+        }
+
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--purple-primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .header-badge {
+            font-size: 12px;
+            padding: 8px 16px;
+            background: var(--purple-subtle);
+            color: var(--purple-dark);
+            border-radius: 2px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .cart-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 60px 0 80px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(60px, 10vw, 120px);
+            font-weight: 400;
+            font-style: italic;
+            color: var(--purple-primary);
+            line-height: 1;
+            margin-bottom: 24px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--warm-gray);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            line-height: 1.7;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        /* Video Section */
+        .hero-video-wrapper {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+        }
+
+        .video-container {
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--off-white);
+            aspect-ratio: 16 / 9;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 115%;
+            height: 115%;
+            object-fit: cover;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 0;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .cta-content h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--dark-gray);
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .cta-content h2 span {
+            color: var(--purple-primary);
+            font-style: italic;
+        }
+
+        .cta-content p {
+            font-size: 16px;
+            color: var(--warm-gray);
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        /* Form styling */
+        .auth-form {
+            background: var(--off-white);
+            padding: 40px;
+            border-radius: 4px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--warm-gray);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 16px;
+            font-size: 16px;
+            font-family: inherit;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            background: var(--white);
+            margin-bottom: 20px;
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--purple-primary);
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 16px 32px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: var(--purple-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: var(--warm-gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Steps Section */
+        .steps-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--dark-gray);
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--warm-gray);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: 4px;
+            border: 1px solid var(--border);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 48px;
+            font-style: italic;
+            color: var(--purple-light);
+            margin-bottom: 16px;
+        }
+
+        .step-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--dark-gray);
+            margin-bottom: 12px;
+        }
+
+        .step-card p {
+            font-size: 14px;
+            color: var(--warm-gray);
+            line-height: 1.7;
+        }
+
+        .step-card code {
+            display: inline-block;
+            background: var(--purple-subtle);
+            color: var(--purple-dark);
+            padding: 4px 8px;
+            border-radius: 2px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            margin-top: 8px;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background: var(--purple-primary);
+            color: var(--white);
+        }
+
+        .features-section .section-header h2 {
+            color: var(--white);
+        }
+
+        .features-section .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-4px);
+        }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            background: var(--forest);
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Loading state */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading.show {
+            display: block;
+        }
+
+        .spinner {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--purple-subtle);
+            border-top-color: var(--purple-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            background: #FEE2E2;
+            color: #DC2626;
+            padding: 12px 16px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            display: none;
+            font-size: 14px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* Scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .cta-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-left, .header-badge {
+                display: none;
+            }
+
+            .logo {
+                position: relative;
+                left: 0;
+                transform: none;
+            }
+
+            .hero-title {
+                font-size: 48px;
+            }
+
+            .steps-grid, .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-content h2 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <nav class="nav-left">
+                    <a href="#start" class="nav-link">Shop</a>
+                    <a href="#features" class="nav-link">Info</a>
+                </nav>
+                <div class="logo">
+                    <span class="logo-text">PM Summit</span>
+                </div>
+                <div class="nav-right">
+                    <span class="header-badge">FREE SHIPPING ON ORDERS</span>
+                    <a href="https://github.com/maxiddog/pm-summit-swag-game" class="nav-link" target="_blank">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">PM Summit 2026</h1>
+            <p class="hero-subtitle">
+                Debug your way to exclusive swag! Use Datadog's MCP server to fix bugs in our store and claim your free PM Summit merchandise.
+            </p>
+            
+            <!-- Video -->
+            <div class="hero-video-wrapper">
+                <div class="video-container">
+                    <video 
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        class="hero-video"
+                    >
+                        <source src="/pm-summit-animation.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="start">
+        <div class="container">
+            <div class="cta-grid">
+                <div class="cta-content scroll-reveal">
+                    <h2>Ready to <span>Debug?</span></h2>
+                    <p>
+                        Enter your email to create your personal instance of the PM Summit Swag Store. 
+                        You'll receive a unique debugging environment with MCP credentials to connect 
+                        your AI code editor. Fix the bugs, complete your order, and we'll ship your 
+                        exclusive PM Summit 2026 merchandise for free!
+                    </p>
+                    <p>
+                        <strong>What you'll learn:</strong> How to use Datadog MCP with Cursor or Claude Code 
+                        to query logs, traces, and exceptions in real-time.
+                    </p>
+                </div>
+                <div class="auth-form scroll-reveal">
+                    <div class="error-message" id="error"></div>
+                    <form id="authForm">
+                        <label class="form-label" for="email">Work Email</label>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="form-input" 
+                            placeholder="you@company.com" 
+                            required 
+                        />
+                        <button type="submit" class="btn-primary" id="submitBtn">
+                            Create My Instance
+                        </button>
+                    </form>
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <span>Creating your debugging environment...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="steps-section" id="steps">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>How It Works</h2>
+                <p>Four simple steps to debugging mastery</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">1</div>
+                    <h3>Get Your Instance</h3>
+                    <p>Enter your email above and receive a unique debugging environment with MCP credentials.</p>
+                </div>
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">2</div>
+                    <h3>Clone & Deploy</h3>
+                    <p>Clone the repo and deploy your own copy.</p>
+                    <code>vercel --prod</code>
+                </div>
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">3</div>
+                    <h3>Debug with AI</h3>
+                    <p>Use <code>Cursor</code> or <code>Claude Code</code> with Datadog MCP to find and fix bugs.</p>
+                </div>
+                <div class="step-card scroll-reveal">
+                    <div class="step-number">4</div>
+                    <h3>Claim Swag!</h3>
+                    <p>Fix all bugs, complete your order, and we'll ship your free PM Summit 2026 merchandise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="container">
+            <div class="section-header scroll-reveal">
+                <h2>What You'll Learn</h2>
+                <p>Master AI-powered debugging in 15 minutes</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Query Datadog Logs</h3>
+                    <p>Use natural language to search through logs, traces, and metrics directly from your code editor.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-Powered Fixes</h3>
+                    <p>Let Cursor or Claude Code analyze errors and suggest fixes using real observability data.</p>
+                </div>
+                <div class="feature-card scroll-reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>Deploy & Test</h3>
+                    <p>Make changes, redeploy instantly, and see your fixes work in real-time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="/images/datadog-logo.png" alt="Datadog" class="footer-logo">
+            <p>PM Summit 2026 Debugging Challenge • Powered by Datadog MCP</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll reveal animation
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.scroll-reveal, .step-card, .feature-card');
+            elements.forEach((el, index) => {
+                const rect = el.getBoundingClientRect();
+                const windowHeight = window.innerHeight;
+                
+                if (rect.top < windowHeight * 0.85) {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Form handling
+        document.getElementById('authForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            const error = document.getElementById('error');
+            
+            // Hide error
+            error.classList.remove('show');
+            
+            // Validate email
+            if (!email || !email.includes('@')) {
+                error.textContent = 'Please enter a valid email address';
+                error.classList.add('show');
+                return;
+            }
+            
+            // Show loading
+            submitBtn.disabled = true;
+            loading.classList.add('show');
+            
+            try {
+                const response = await fetch('/api/create-instance', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email })
+                });
+                
+                const data = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to create instance');
+                }
+                
+                // Store data and redirect
+                localStorage.setItem('pmSummitInstance', JSON.stringify({
+                    email,
+                    instanceId: data.instanceId,
+                    token: data.token,
+                    mcpConfig: data.mcpConfig
+                }));
+                
+                window.location.href = '/instance.html';
+                
+            } catch (err) {
+                error.textContent = err.message;
+                error.classList.add('show');
+                submitBtn.disabled = false;
+                loading.classList.remove('show');
+            }
+        });
+    </script>
+</body>
+</html>

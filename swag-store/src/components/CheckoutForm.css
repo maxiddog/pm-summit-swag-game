@@ -1,0 +1,220 @@
+/* Checkout Form - Dispatch Light Theme */
+.checkout-view {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.checkout-container {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 32px;
+}
+
+.checkout-form-section {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--border-light, #e6ebf1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-section h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--text-dark, #1a1f36);
+  font-family: 'Instrument Serif', serif;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary, #525f7f);
+}
+
+.form-group input {
+  padding: 12px 16px;
+  background: #ffffff;
+  border: 2px solid var(--border-light, #e6ebf1);
+  border-radius: 8px;
+  color: var(--text-dark, #1a1f36);
+  font-size: 16px;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-blue, #4A7BF7);
+  box-shadow: 0 0 0 3px rgba(74, 123, 247, 0.1);
+}
+
+.form-group input.error {
+  border-color: var(--error-red, #e25950);
+}
+
+.form-group input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--bg-light, #f8fafc);
+}
+
+.error-message {
+  color: var(--error-red, #e25950);
+  font-size: 12px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.debug-hint {
+  background: #fef3cd;
+  border: 1px solid #ffc107;
+  border-radius: 12px;
+  padding: 16px;
+  color: #856404;
+}
+
+.debug-hint strong {
+  color: #856404;
+}
+
+.debug-hint em {
+  font-size: 13px;
+  color: #856404;
+}
+
+/* Order Summary */
+.order-summary {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid var(--border-light, #e6ebf1);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.order-summary h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--text-dark, #1a1f36);
+  font-family: 'Instrument Serif', serif;
+}
+
+.summary-items {
+  border-bottom: 1px solid var(--border-light, #e6ebf1);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  gap: 12px;
+}
+
+.summary-item-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-light, #f8fafc);
+  flex-shrink: 0;
+}
+
+.summary-item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.summary-item-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 4px;
+}
+
+.summary-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark, #1a1f36);
+}
+
+.summary-item-size {
+  font-size: 12px;
+  color: var(--text-secondary, #525f7f);
+}
+
+.summary-item-price {
+  font-weight: 600;
+  color: var(--success-green, #24b47e);
+}
+
+.summary-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light, #e6ebf1);
+  margin-bottom: 16px;
+  color: var(--text-dark, #1a1f36);
+}
+
+.total-amount {
+  color: var(--success-green, #24b47e);
+  font-size: 24px;
+}
+
+.shipping-note {
+  font-size: 14px;
+  color: var(--text-secondary, #525f7f);
+  text-align: center;
+  padding: 12px;
+  background: rgba(36, 180, 126, 0.1);
+  border-radius: 8px;
+}
+
+@media (max-width: 968px) {
+  .checkout-container {
+    grid-template-columns: 1fr;
+  }
+
+  .order-summary {
+    position: static;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+}

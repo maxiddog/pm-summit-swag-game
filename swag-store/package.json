@@ -1,0 +1,27 @@
+{
+  "name": "datadog-swag-store",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "npm run build && vercel --prod"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@datadog/browser-rum": "^5.0.0",
+    "@datadog/browser-logs": "^5.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "buildCommand": null,
+  "outputDirectory": null,
+  "rewrites": [
+    { "source": "/instance", "destination": "/instance.html" }
+  ]
+}
+

@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+
+:root {
+  /* PM Summit purple palette */
+  --primary-purple: #7C3AED;
+  --primary-purple-hover: #5B21B6;
+  --primary-purple-light: rgba(124, 58, 237, 0.08);
+  --purple-subtle: #EDE9FE;
+  --purple-light: #A78BFA;
+  
+  --text-dark: #292524;
+  --text-secondary: #78716C;
+  --text-muted: #A8A29E;
+  
+  --bg-cream: #FAF9F7;
+  --bg-white: #ffffff;
+  --bg-light: #F5F5F3;
+  --bg-pattern: #F5F5F3;
+  
+  --border-light: #E7E5E4;
+  --border-medium: #D6D3D1;
+  
+  --success-green: #10B981;
+  --error-red: #DC2626;
+  --warning-amber: #F59E0B;
+  
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: light;
+  color: var(--text-dark);
+  background-color: var(--bg-cream);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg-cream);
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+}

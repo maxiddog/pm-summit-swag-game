@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Instance - PM Summit 2026 Swag Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --purple-primary: #7C3AED;
+            --purple-dark: #5B21B6;
+            --purple-light: #A78BFA;
+            --purple-subtle: #EDE9FE;
+            --cream: #FAF9F7;
+            --off-white: #F5F5F3;
+            --warm-gray: #78716C;
+            --dark-gray: #292524;
+            --forest: #1C1917;
+            --white: #FFFFFF;
+            --border: #E7E5E4;
+            --success: #10B981;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--cream);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Header */
+        .header {
+            padding: 20px 0;
+            background: var(--cream);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 28px;
+            font-weight: 400;
+            color: var(--purple-primary);
+            text-decoration: none;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--dark-gray);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--purple-primary);
+        }
+
+        /* Main Content */
+        .main {
+            padding: 60px 0;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .page-header h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 48px;
+            font-weight: 400;
+            color: var(--dark-gray);
+            margin-bottom: 16px;
+        }
+
+        .page-header h1 span {
+            color: var(--purple-primary);
+            font-style: italic;
+        }
+
+        .page-header p {
+            font-size: 16px;
+            color: var(--warm-gray);
+        }
+
+        /* Setup Cards */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .setup-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 32px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .setup-card:nth-child(1) { animation-delay: 0.1s; }
+        .setup-card:nth-child(2) { animation-delay: 0.2s; }
+        .setup-card:nth-child(3) { animation-delay: 0.3s; }
+        .setup-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--purple-subtle);
+            color: var(--purple-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+
+        .setup-card p {
+            color: var(--warm-gray);
+            font-size: 14px;
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+
+        /* Code blocks */
+        .code-block {
+            background: var(--forest);
+            border-radius: 4px;
+            padding: 20px;
+            margin: 16px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            color: #A5F3FC;
+            display: block;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: var(--purple-primary);
+            color: var(--white);
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--purple-dark);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+        }
+
+        /* Form elements */
+        .form-group {
+            margin-top: 16px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--warm-gray);
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            font-size: 14px;
+            font-family: inherit;
+            border: 1px solid var(--border);
+            border-radius: 2px;
+            background: var(--off-white);
+            transition: border-color 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--purple-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--purple-primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--purple-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:disabled {
+            background: var(--warm-gray);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple-primary);
+            border: 2px solid var(--purple-primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--purple-subtle);
+        }
+
+        .success-message {
+            background: #D1FAE5;
+            color: #065F46;
+            padding: 12px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: 500;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px 0;
+            background: var(--forest);
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            height: 40px;
+            margin-bottom: 16px;
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .page-header h1 {
+                font-size: 32px;
+            }
+
+            .setup-card {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo-text">PM Summit</a>
+                <a href="https://github.com/maxiddog/pm-summit-swag-game" class="nav-link" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="page-header">
+                <h1>Your <span>Instance</span> is Ready</h1>
+                <p>Follow these steps to set up your PM Summit 2026 debugging environment</p>
+            </div>
+
+            <div class="setup-grid">
+                <!-- Step 1: Clone & Deploy -->
+                <div class="setup-card">
+                    <div class="step-header">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Clone & Deploy Your Swag Store</h3>
+                    </div>
+                    <p>Open your terminal and run these commands to get your own copy of the buggy PM Summit swag store:</p>
+                    <div class="code-block">
+                        <code>git clone https://github.com/maxiddog/pm-summit-swag-game.git
+cd pm-summit-swag-game/swag-store
+vercel --prod</code>
+                        <button class="copy-btn" onclick="copyCode(this, 'git clone https://github.com/maxiddog/pm-summit-swag-game.git && cd pm-summit-swag-game/swag-store && vercel --prod')">Copy</button>
+                    </div>
+                    <p>This will deploy your personal, buggy swag store to Vercel. Copy the <strong>Production URL</strong> from the output.</p>
+                </div>
+
+                <!-- Step 2: Enter URL -->
+                <div class="setup-card">
+                    <div class="step-header">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Enter Your Deployed URL</h3>
+                    </div>
+                    <p>Paste the Production URL of your newly deployed swag store below:</p>
+                    <div class="form-group">
+                        <label class="form-label" for="instanceUrl">Your Swag Store URL</label>
+                        <input type="url" id="instanceUrl" class="form-input" placeholder="https://swag-store-yourname.vercel.app" />
+                    </div>
+                    <button id="saveUrlBtn" class="btn btn-primary" style="margin-top: 16px;">Save URL</button>
+                    <div id="urlSavedMessage" class="success-message" style="margin-top: 12px;">✓ URL saved successfully!</div>
+                </div>
+
+                <!-- Step 3: Configure MCP -->
+                <div class="setup-card">
+                    <div class="step-header">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Configure Datadog MCP</h3>
+                    </div>
+                    <p>Copy this configuration into your AI code editor (Cursor, Claude Code) to connect to the Datadog MCP server:</p>
+                    <div class="code-block">
+                        <code id="mcpConfigCode">{
+  "mcpServers": {
+    "datadog": {
+      "command": "npx",
+      "args": ["-y", "@anthropic-ai/datadog-mcp-server"],
+      "env": {
+        "DD_API_KEY": "your-api-key",
+        "DD_APP_KEY": "your-app-key",
+        "DD_SITE": "datadoghq.com"
+      }
+    }
+  }
+}</code>
+                        <button class="copy-btn" onclick="copyMcpConfig(this)">Copy</button>
+                    </div>
+                    <p>This connects your AI assistant to Datadog for querying logs, traces, and exceptions.</p>
+                </div>
+
+                <!-- Step 4: Start Debugging -->
+                <div class="setup-card">
+                    <div class="step-header">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Start Debugging!</h3>
+                    </div>
+                    <p>Once your URL is saved and MCP is configured, click below to open your buggy PM Summit swag store and begin the challenge:</p>
+                    <button id="openStoreBtn" class="btn btn-primary" style="margin-top: 16px;" disabled>Open My Swag Store →</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <img src="/images/datadog-logo.png" alt="Datadog" class="footer-logo">
+            <p>PM Summit 2026 Debugging Challenge • Powered by Datadog MCP</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load instance data
+        let instanceData = {};
+        try {
+            instanceData = JSON.parse(localStorage.getItem('pmSummitInstance') || '{}');
+        } catch (e) {
+            console.error('Failed to load instance data');
+        }
+
+        // Update MCP config with actual keys if available
+        if (instanceData.mcpConfig) {
+            document.getElementById('mcpConfigCode').textContent = JSON.stringify(instanceData.mcpConfig, null, 2);
+        }
+
+        // URL management
+        let savedUrl = localStorage.getItem('pmSummitStoreUrl') || '';
+        const urlInput = document.getElementById('instanceUrl');
+        const saveBtn = document.getElementById('saveUrlBtn');
+        const savedMessage = document.getElementById('urlSavedMessage');
+        const openBtn = document.getElementById('openStoreBtn');
+
+        if (savedUrl) {
+            urlInput.value = savedUrl;
+            openBtn.disabled = false;
+        }
+
+        saveBtn.addEventListener('click', () => {
+            const url = urlInput.value.trim();
+            if (url && url.startsWith('http')) {
+                localStorage.setItem('pmSummitStoreUrl', url);
+                savedUrl = url;
+                savedMessage.classList.add('show');
+                openBtn.disabled = false;
+                setTimeout(() => savedMessage.classList.remove('show'), 3000);
+            }
+        });
+
+        openBtn.addEventListener('click', () => {
+            if (savedUrl) {
+                window.open(savedUrl, '_blank');
+            }
+        });
+
+        // Copy functions
+        function copyCode(btn, text) {
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        function copyMcpConfig(btn) {
+            const config = document.getElementById('mcpConfigCode').textContent;
+            navigator.clipboard.writeText(config).then(() => {
+                btn.textContent = 'Copied!';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

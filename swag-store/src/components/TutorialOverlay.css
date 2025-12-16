@@ -1,0 +1,239 @@
+/* Tutorial Overlay - PM Summit Purple Theme */
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(41, 37, 36, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.tutorial-content {
+  background: #ffffff;
+  border-radius: 4px;
+  padding: 32px;
+  max-width: 700px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid var(--border-light, #E7E5E4);
+  position: relative;
+  animation: slideUp 0.4s ease-out;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.tutorial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-light, #E7E5E4);
+}
+
+.tutorial-header h2 {
+  font-size: 24px;
+  flex: 1;
+  color: var(--text-dark, #292524);
+  font-family: 'Playfair Display', serif;
+}
+
+.tutorial-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.tutorial-minimize,
+.tutorial-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--bg-light, #F5F5F3);
+  color: var(--text-secondary, #78716C);
+  border-radius: 2px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.tutorial-minimize:hover,
+.tutorial-close:hover {
+  background: var(--primary-purple, #7C3AED);
+  color: white;
+}
+
+.tutorial-body {
+  line-height: 1.8;
+}
+
+.tutorial-body h3 {
+  font-size: 18px;
+  margin: 20px 0 12px;
+  color: var(--text-dark, #292524);
+  font-family: 'Playfair Display', serif;
+}
+
+.tutorial-body p {
+  margin-bottom: 16px;
+  color: var(--text-secondary, #78716C);
+}
+
+.tutorial-body ul, .tutorial-body ol {
+  margin: 16px 0 16px 24px;
+  color: var(--text-secondary, #78716C);
+}
+
+.tutorial-body li {
+  margin-bottom: 8px;
+}
+
+.tutorial-body strong {
+  color: var(--text-dark, #292524);
+}
+
+.code-prompt {
+  background: #F5F5F3;
+  border-left: 4px solid var(--primary-purple, #7C3AED);
+  padding: 16px;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+.code-prompt strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--text-dark, #292524);
+}
+
+.code-prompt code {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  padding: 12px;
+  background: #1C1917;
+  color: #A78BFA;
+  border-radius: 2px;
+  margin-top: 8px;
+  overflow-x: auto;
+}
+
+.tip-box {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--success-green, #10B981);
+  border-radius: 4px;
+  padding: 16px;
+  margin: 20px 0;
+}
+
+.tip-box strong {
+  color: var(--success-green, #10B981);
+}
+
+.tutorial-footer {
+  display: flex;
+  gap: 12px;
+  margin-top: 32px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light, #E7E5E4);
+}
+
+.btn-tutorial-next {
+  flex: 1;
+  padding: 12px 24px;
+  background: var(--primary-purple, #7C3AED);
+  border: none;
+  border-radius: 2px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+}
+
+.btn-tutorial-next:hover {
+  background: var(--primary-purple-hover, #5B21B6);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+}
+
+.btn-tutorial-skip {
+  padding: 12px 24px;
+  background: transparent;
+  border: 2px solid var(--primary-purple, #7C3AED);
+  border-radius: 2px;
+  color: var(--primary-purple, #7C3AED);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+}
+
+.btn-tutorial-skip:hover {
+  background: var(--purple-subtle, #EDE9FE);
+}
+
+.tutorial-progress {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text-secondary, #78716C);
+}
+
+.tutorial-minimized {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--primary-purple, #7C3AED);
+  color: white;
+  padding: 16px 24px;
+  border-radius: 2px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+  z-index: 999;
+  transition: all 0.3s ease;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+}
+
+.tutorial-minimized:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+  background: var(--primary-purple-hover, #5B21B6);
+}
+
+@media (max-width: 768px) {
+  .tutorial-content {
+    margin: 20px;
+    max-height: calc(100vh - 40px);
+  }
+}
