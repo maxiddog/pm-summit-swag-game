@@ -183,8 +183,13 @@
         .cta-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            gap: 60px;
             align-items: center;
+        }
+
+        .cta-left {
+            display: flex;
+            flex-direction: column;
         }
 
         .cta-content h2 {
@@ -204,15 +209,39 @@
         .cta-content p {
             font-size: 16px;
             color: var(--warm-gray);
-            margin-bottom: 32px;
+            margin-bottom: 24px;
             line-height: 1.8;
         }
 
         /* Form styling */
         .auth-form {
             background: var(--off-white);
-            padding: 40px;
+            padding: 32px;
             border-radius: 4px;
+            margin-top: 8px;
+        }
+
+        /* CTA Video */
+        .cta-video-container {
+            border-radius: 4px;
+            overflow: hidden;
+            background: var(--off-white);
+            aspect-ratio: 1 / 1;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cta-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
         }
 
         .form-label {
@@ -370,21 +399,53 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+        .features-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .features-video-container {
+            border-radius: 4px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.1);
+            aspect-ratio: 4 / 3;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .features-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 120%;
+            object-fit: cover;
+        }
+
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
+            grid-template-columns: 1fr;
+            gap: 20px;
         }
 
         .feature-card {
-            padding: 32px;
+            padding: 24px 28px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
-            text-align: center;
+            text-align: left;
             backdrop-filter: blur(10px);
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
         }
 
         .feature-card.visible {
@@ -394,25 +455,30 @@
 
         .feature-card:hover {
             background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-4px);
+            transform: translateX(4px);
         }
 
         .feature-icon {
-            font-size: 40px;
-            margin-bottom: 20px;
+            font-size: 32px;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            flex: 1;
         }
 
         .feature-card h3 {
             font-family: 'Inter', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         .feature-card p {
             font-size: 14px;
             color: rgba(255, 255, 255, 0.8);
-            line-height: 1.7;
+            line-height: 1.6;
+            margin: 0;
         }
 
         /* Footer */
@@ -507,8 +573,14 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .features-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .features-video-container {
+                max-width: 500px;
+                margin: 0 auto;
             }
         }
 
@@ -591,39 +663,53 @@
     <section class="cta-section" id="start">
         <div class="container">
             <div class="cta-grid">
-                <div class="cta-content scroll-reveal">
-                    <h2>Ready to <span>Debug?</span></h2>
-                    <p>
-                        Enter your email to create your personal instance of the PM Summit Swag Store. 
-                        You'll receive a unique debugging environment with MCP credentials to connect 
-                        your AI code editor. Fix the bugs, complete your order, and we'll ship your 
-                        exclusive PM Summit 2026 merchandise for free!
-                    </p>
-                    <p>
-                        <strong>What you'll learn:</strong> How to use Datadog MCP with Cursor or Claude Code 
-                        to query logs, traces, and exceptions in real-time.
-                    </p>
-                </div>
-                <div class="auth-form scroll-reveal">
-                    <div class="error-message" id="error"></div>
-                    <form id="authForm">
-                        <label class="form-label" for="email">Work Email</label>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            class="form-input" 
-                            placeholder="you@company.com" 
-                            required 
-                        />
-                        <button type="submit" class="btn-primary" id="submitBtn">
-                            Create My Instance
-                        </button>
-                    </form>
-                    <div class="loading" id="loading">
-                        <div class="spinner"></div>
-                        <span>Creating your debugging environment...</span>
+                <div class="cta-left">
+                    <div class="cta-content scroll-reveal">
+                        <h2>Ready to <span>Debug?</span></h2>
+                        <p>
+                            Enter your email to create your personal instance of the PM Summit Swag Store. 
+                            You'll receive a unique debugging environment with MCP credentials to connect 
+                            your AI code editor. Fix the bugs, complete your order, and we'll ship your 
+                            exclusive PM Summit 2026 merchandise for free!
+                        </p>
+                        <p>
+                            <strong>What you'll learn:</strong> How to use Datadog MCP with Cursor or Claude Code 
+                            to query logs, traces, and exceptions in real-time.
+                        </p>
                     </div>
+                    <div class="auth-form scroll-reveal">
+                        <div class="error-message" id="error"></div>
+                        <form id="authForm">
+                            <label class="form-label" for="email">Work Email</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="you@company.com" 
+                                required 
+                            />
+                            <button type="submit" class="btn-primary" id="submitBtn">
+                                Create My Instance
+                            </button>
+                        </form>
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <span>Creating your debugging environment...</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-video-container scroll-reveal">
+                    <video 
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        class="cta-video"
+                    >
+                        <source src="/working-man.mp4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -669,21 +755,41 @@
                 <h2>What You'll Learn</h2>
                 <p>Master AI-powered debugging in 15 minutes</p>
             </div>
-            <div class="features-grid">
-                <div class="feature-card scroll-reveal">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Query Datadog Logs</h3>
-                    <p>Use natural language to search through logs, traces, and metrics directly from your code editor.</p>
+            <div class="features-layout">
+                <div class="features-video-container scroll-reveal">
+                    <video 
+                        autoplay
+                        loop
+                        muted
+                        playsinline
+                        preload="auto"
+                        class="features-video"
+                    >
+                        <source src="/teacher.mp4" type="video/mp4">
+                    </video>
                 </div>
-                <div class="feature-card scroll-reveal">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI-Powered Fixes</h3>
-                    <p>Let Cursor or Claude Code analyze errors and suggest fixes using real observability data.</p>
-                </div>
-                <div class="feature-card scroll-reveal">
-                    <div class="feature-icon">🚀</div>
-                    <h3>Deploy & Test</h3>
-                    <p>Make changes, redeploy instantly, and see your fixes work in real-time.</p>
+                <div class="features-grid">
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon">🔍</div>
+                        <div class="feature-content">
+                            <h3>Query Datadog Logs</h3>
+                            <p>Use natural language to search through logs, traces, and metrics directly from your code editor.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon">🤖</div>
+                        <div class="feature-content">
+                            <h3>AI-Powered Fixes</h3>
+                            <p>Let Cursor or Claude Code analyze errors and suggest fixes using real observability data.</p>
+                        </div>
+                    </div>
+                    <div class="feature-card scroll-reveal">
+                        <div class="feature-icon">🚀</div>
+                        <div class="feature-content">
+                            <h3>Deploy & Test</h3>
+                            <p>Make changes, redeploy instantly, and see your fixes work in real-time.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
